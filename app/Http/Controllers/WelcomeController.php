@@ -98,5 +98,10 @@ class WelcomeController extends Controller
             'users' => $this->users,
             'revenueInDollars' => $this->revenueInDollars,
         ]);
+
+        
     }
+
+
+
 }

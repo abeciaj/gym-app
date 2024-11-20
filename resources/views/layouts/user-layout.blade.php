@@ -22,12 +22,14 @@
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     @yield('dataTable')
-    <title>Gym System</title>
+    <title>S&J Gym Management</title>
 </head>
 <style>
+
 .fa,
 .fas,
 .fa {
@@ -57,6 +59,31 @@ body {
         margin-left: 200px;
     }
 }
+
+.search-bar {
+        width: 50%; 
+    }
+
+    
+    .search-input {
+        width: 100%; 
+    }
+
+    .main-sidebar {
+    position: fixed;
+    margin: right 100%;
+    margin-top: 50px;
+
+}
+
+.navbar {
+    z-index: 1060; 
+}
+
+.content-wrapper {
+    margin-left: 200px; 
+}
+    
 </style>
 @yield('stripeStyle')
 
@@ -66,8 +93,9 @@ body {
         <img class="animation__shake" src="imgs/gym-icon.png" alt="GymSystemLogo" height="150" width="150">
     </div>
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="font-size: 14px;">
-        <!-- Left navbar links -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+         
         <ul class="navbar-nav">
             @role('admin|cityManager|gymManager')
             <li class="nav-item">
@@ -75,68 +103,83 @@ body {
                         class="fas fa-bars"></i></a>
             </li>
             @endrole
+
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Home</a>
             </li>
-            <!--  <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li> -->
+           
         </ul>
 
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <li class="dropdown user user-menu" style="cursor:pointer;">
-                <div class="media align-items-center">
-                    <img src="{{asset(auth()->user()->profileImageFile)}}" alt="User Avatar"
-                        class="mr-2 mt-1 img-size-32 img-circle mr-2">
-                    <div class="media-body">
-                        <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
-                            {{ auth()->user()->name }}
-                        </h6>
-                    </div>
-                </div>
-                <ul class="dropdown-menu" style="width:200px">
-                    <li class="user-header mb-1" style="height: 140px;">
-                        <img class="profile-user-img img-fluid img-circle"
-                            src="{{asset(auth()->user()->profileImageFile)}}" alt="User profile picture">
-                        <p class="mb-0">
-                            {{ auth()->user()->name }}
-                        </p>
+          
+            <form class="d-flex justify-content-center search-bar">
+                <input class="form-control me-4" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-bell"></i><span class="badge bg-danger rounded-pill">6</span>
+                        </a>
                     </li>
-                    <li class="user-footer d-flex justify-content-between">
-                        <div class="pull-left">
-                            <a href="{{ route('user.admin_profile', auth()->user()->id) }}"
-                                class="btn btn-default btn-flat">Profile</a>
-                        </div>
-                        <div class="pull-right">
-                            <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Sign out</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            
+                            <i class="fas fa-language"></i>English
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">French</a></li>
+                            <li><a class="dropdown-item" href="#">Spanish</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset(auth()->user()->profileImageFile) }}" alt="User Avatar" class="rounded-circle me-2" width="32" height="32">
+                            <span>{{ auth()->user()->name }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('user.admin_profile', auth()->user()->id) }}">
+                                    <i class="fas fa-user me-2"></i> Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt me-2"></i> Sign out
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-widget="fullscreen" role="button">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
-        </ul>
+            </div>
+        </div>
     </nav>
+
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
     @role('admin|cityManager|gymManager')
 
-        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
-            <!-- Brand Logo -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+           
             <a href="{{ route('welcome') }}" class="brand-link px-2">
-                <span class="brand-text font-weight-light px-4">Gym System</span>
+                <span class="brand-text font-weight-light px-4"> S&J Gym </br> Management</span>
             </a>
             <!-- Sidebar -->.
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
+               
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="{{asset(auth()->user()->profileImageFile)}}" class="img-circle elevation-2"
@@ -408,6 +451,8 @@ body {
     <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="plugins/summernote/summernote-bs4.min.js"></script>
     <!-- DataTables  & Plugins -->
+       <!-- Chart.Js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
