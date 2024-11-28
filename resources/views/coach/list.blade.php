@@ -25,7 +25,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Coaches</h3>
-                    
+                    <div class="card-tools">
+                        <a href="coach/create" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Add New Coach
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="proj">

@@ -6,6 +6,7 @@
             <div class="row g-3">
                 @role('admin|cityManager|gymManager')
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="/">
                         <div class="card text-white bg-info shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -17,10 +18,12 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 @endrole
                 @role('admin')
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="{{ route('city.list') }}">
                         <div class="card text-white bg-success shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -32,8 +35,10 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="{{ route('cityManager.list') }}">
                         <div class="card text-white bg-secondary shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -45,10 +50,12 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 @endrole
                 @role('admin|cityManager')
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="/gym/list">
                         <div class="card text-white bg-danger shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -60,8 +67,10 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="gymManager/list">
                         <div class="card text-dark bg-warning shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -73,10 +82,12 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 @endrole
                 @role('admin|cityManager|gymManager')
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="coach/list">
                         <div class="card text-dark bg-light shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -88,8 +99,10 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="/allUsers/list">
                         <div class="card text-white bg-dark shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -101,6 +114,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 @endrole
             </div>

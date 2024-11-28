@@ -25,7 +25,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Gyms</h3>
-                    
+                    <div class="card-tools">
+                        <a href="/gym/create" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Add New Gym
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="proj">

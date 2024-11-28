@@ -109,34 +109,9 @@ body {
             </li>
            
         </ul>
-
-          
-            <form class="d-flex justify-content-center search-bar">
-                <input class="form-control me-4" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-
-            
             <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
                 <ul class="navbar-nav align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-bell"></i><span class="badge bg-danger rounded-pill">6</span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            
-                            <i class="fas fa-language"></i>English
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="#">English</a></li>
-                            <li><a class="dropdown-item" href="#">French</a></li>
-                            <li><a class="dropdown-item" href="#">Spanish</a></li>
-                        </ul>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ asset(auth()->user()->profileImageFile) }}" alt="User Avatar" class="rounded-circle me-2" width="32" height="32">
@@ -157,11 +132,6 @@ body {
                                 </form>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-widget="fullscreen" role="button">
-                            <i class="fas fa-expand-arrows-alt"></i>
-                        </a>
                     </li>
                 </ul>
             </div>
