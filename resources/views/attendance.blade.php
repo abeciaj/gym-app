@@ -24,14 +24,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Attendance</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
+                    
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="proj">
@@ -64,20 +57,5 @@
             </div>
         </section>
     </div>
-   <!--  <script>
-        function deletegymManager(id) {
-            if (confirm("Do you want to delete this record?")) {
-                $.ajax({
-                    url: '/gymManager/' + id,
-                    type: 'DELETE',
-                    data: {
-                        _token: $("input[name=_token]").val()
-                    },
-                    success: function(response) {
-                        $("#did" + id).remove();
-                    }
-                });
-            }
-        }
-    </script> -->
+
 @endsection
