@@ -25,6 +25,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Projects</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('trainingPackeges.creatPackege') }}" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Add New Package
+                        </a>
+                    </div>
                     
                 </div>
                 <div class="card-body p-0">

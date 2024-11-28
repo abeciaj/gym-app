@@ -12,7 +12,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Projects</li>
+                            <li class="breadcrumb-item active">Managers</li>
                         </ol>
                     </div>
                 </div>
@@ -24,7 +24,12 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
+                    <h3 class="card-title">Managers</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('cityManager.create') }}" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Add New City Manager
+                        </a>
+                    </div>
                     
                 </div>
                 <div class="card-body p-0">

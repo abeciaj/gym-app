@@ -25,6 +25,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Projects</h3>
+                    <div class="card-tools">
+                        <a href="gymManager/create" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Add New Gym Manager
+                        </a>
+                    </div>
                     
                 </div>
                 <div class="card-body p-0">
