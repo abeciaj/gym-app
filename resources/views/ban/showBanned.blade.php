@@ -50,7 +50,7 @@
                                         <span>{{ $user->email }}</span>
                                     </td>
                                     <td class="project-state">
-                                        <img alt="Avatar" class="table-avatar" src="{{ $user->profile_image }}">
+                                        <img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}">
                                     </td>
                                     <td class="project-actions text-center">
                                         <a href="javascript:void(0)" onclick="unBanUsers({{ $user->id }})"

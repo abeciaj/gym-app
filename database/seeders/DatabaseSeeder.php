@@ -31,6 +31,5 @@ class DatabaseSeeder extends Seeder
         $this->call(TrainingSessionUserSeeder::class);
         $this->call(GymsTrainingPackagesSeeder::class);
         $this->call(UpdateCityManagerIDSeeder::class);
-        $this->call(AddNewEmailTOUSer::class);
     }
 }

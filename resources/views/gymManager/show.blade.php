@@ -34,7 +34,7 @@
                             <td>{{$singleUser->id}}</td>
                             <td>{{$singleUser->name}} </td>
                             <td>{{$singleUser->email}} </td>
-                            <td><img alt="Avatar" class="table-avatar" src="{{$singleUser->profile_image}}"></td>
+                            <td><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
                         </tr>
                     </tbody>
                     <tbody>
