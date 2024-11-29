@@ -51,7 +51,7 @@
                                     <td class="project-state">{{ $user->name }} </td>
                                     <td class="project-state">{{ $user->email }} </td>
                                     <td class="project-state"><img alt="Avatar" class="table-avatar"
-                                            src="{{ asset($user->profile_image) }}"></td>
+                                            src="{{ asset('imgs/def-image.jpg') }}"></td>
                                     <td class="project-state">{{ $user->national_id }} </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('gymManager.show', $user['id']) }}">
