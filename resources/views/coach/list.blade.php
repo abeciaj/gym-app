@@ -62,7 +62,7 @@
                                     </td>
                                     <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">
-                                        <img alt="Avatar" class="table-avatar" src="{{ $coach->profile_image }}">
+                                        <img alt="Avatar" class="table-avatar" src="{{ asset('imgs/def-image.jpg') }}">
                                     </td>
                                     <td class="project-actions project-state">
                                         <a class="btn btn-info btn-sm" href="{{ route('coach.show', $coach['id']) }}">
