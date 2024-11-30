@@ -50,7 +50,7 @@
                                 <th class="project-state">Coach City</th>
                                 <th class="project-state">Created at</th>
                                 <th class="project-state">Coach Image</th>
-                                <th></th>
+                                <th class="project-state">Action</th>
                             </tr>
                         </thead>
                         <tbody>

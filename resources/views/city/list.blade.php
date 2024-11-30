@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="card-body p-0">
-                    <table class="table table-striped">
+                    <table class="table table-striped projects">
                         <thead>
                             <tr>
                                 <th class="project-state"> ID </th>
@@ -41,6 +41,7 @@
                                 <th class="project-state"> City Manager Name</th>
                                 <th class="project-state">Created at</th>
                                 <th class="project-state">Action</th>
+                                
                             </tr>
                         </thead>
                         <tbody>

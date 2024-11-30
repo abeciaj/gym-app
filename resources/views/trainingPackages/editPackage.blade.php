@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content">
     
-        <form action="{{route('trainingPackeges.update_package',[$package['id']])}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('trainingPackages.update_package',[$package['id']])}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
             @method('PUT')
             <div class="row">

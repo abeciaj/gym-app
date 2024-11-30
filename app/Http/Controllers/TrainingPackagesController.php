@@ -14,13 +14,28 @@ class TrainingPackagesController extends Controller
     #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
-    public function index()
+    public function index(Request $request)
     {
-        $packages = TrainingPackage::all();
-        if (count($packages) <= 0) { //for empty statement
+        $query = TrainingPackage::query(); // Initialize the query for training packages
+
+        // Apply search filter if provided
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        // Paginate results
+        $packages = $query->paginate(10); // Specify number of items per page
+
+        // Show empty view if no results and no search applied
+        if ($packages->isEmpty() && !$request->has('search')) {
             return view('empty');
         }
-        return view('trainingPackeges.listPackeges', ['packages' => $packages]);
+
+        return view('trainingPackages.listPackages', [
+            'packages' => $packages,
+            'search' => $request->input('search', ''), // Retain search input in the view
+        ]);
     }
     #=======================================================================================#
     #			                             create                                        	#
@@ -30,7 +45,7 @@ class TrainingPackagesController extends Controller
         $packages = TrainingPackage::all();
 
 
-        return view('trainingPackeges.creatPackege', [
+        return view('trainingPackages.creatPackage', [
             'packages' => $packages,
 
         ]);
@@ -57,7 +72,7 @@ class TrainingPackagesController extends Controller
 
 
 
-        return redirect()->route('trainingPackeges.listPackeges');
+        return redirect()->route('trainingPackages.listPackages');
     }
     #=======================================================================================#
     #			                             show                                         	#
@@ -65,7 +80,7 @@ class TrainingPackagesController extends Controller
     public function show($id)
     {
         $package = TrainingPackage::findorfail($id);
-        return view('trainingPackeges.show_training_package', ['package' => $package]);
+        return view('trainingPackages.show_training_package', ['package' => $package]);
     }
     #=======================================================================================#
     #			                             edit                                         	#
@@ -76,7 +91,7 @@ class TrainingPackagesController extends Controller
 
         $package = TrainingPackage::find($id);
 
-        return view('trainingPackeges.editPackege', ['package' => $package, 'packages' => $packages]);
+        return view('trainingPackages.editPackage', ['package' => $package, 'packages' => $packages]);
     }
     #=======================================================================================#
     #			                             update                                         #
@@ -100,7 +115,7 @@ class TrainingPackagesController extends Controller
 
 
         ]);
-        return redirect()->route('trainingPackeges.listPackeges');
+        return redirect()->route('trainingPackages.listPackages');
     }
     #=======================================================================================#
     #			                             destroy                                       	#

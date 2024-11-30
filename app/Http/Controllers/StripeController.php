@@ -68,11 +68,27 @@ class StripeController extends Controller
         return redirect()->route('PaymentPackage.purchase_history');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $revenues = Revenue::all();
+        $query = Revenue::query(); // Initialize the query for revenues
+
+        // Apply search filter if provided
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('user_id', 'like', '%' . $search . '%');
+        }
+
+        // Paginate results
+        $revenues = $query->paginate(10); // Specify number of items per page
+
+        // Show empty view if no results and no search applied
+        if ($revenues->isEmpty() && !$request->has('search')) {
+            return view('empty');
+        }
+
         return view('PaymentPackage.purchase_history', [
             'revenues' => $revenues,
+            'search' => $request->input('search', ''), // Retain search input in the view
         ]);
     }
 }
