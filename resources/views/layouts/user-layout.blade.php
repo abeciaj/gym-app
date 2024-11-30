@@ -179,143 +179,54 @@ body {
                     {{-- # ======================================= # Cities # ======================================= # --}}
                     @role('admin')
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('city.list') }}" class="nav-link">
                             <i class="nav-icon fas fa-city"></i>
                             <p> Cities
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('city.list') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All Cities </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('city.create') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('city.showDeleted') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Restore Deleted </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     {{-- # ======================================= # City Managers # ======================================= # --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('cityManager.list') }}" class="nav-link">
                             <i class="nav-icon fas fa-user-tie"></i>
-                            <p> City Managers <i class="fas fa-angle-left right"></i>
+                            <p> City Managers
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('cityManager.list') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All City Managers </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('cityManager.create') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     @endrole
                     {{-- # ======================================= # Gyms # ======================================= # --}}
                     @role('admin|cityManager')
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/gym/list" class="nav-link">
                             <i class="nav-icon fas fa-dumbbell"></i>
                             <p> Gyms
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/gym/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> List Gyms </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/gym/create" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     {{-- # ======================================= # Gym Managers # ======================================= # --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="gymManager/list" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p> Gym Managers
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="gymManager/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All Gym Managers </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="gymManager/create" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add new </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     @endrole
                     {{-- # ======================================= # Coaches # ======================================= # --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="coach/list" class="nav-link">
                             <i class="nav-icon fas fa-user-ninja"></i>
                             <p> Coaches
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="coach/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All Coaches </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="coach/create" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     {{-- # ======================================= # Users # ======================================= # --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/allUsers/list" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p> Users
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/allUsers/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All Users </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     {{-- # ======================================= # Training Packages # ======================================= # --}}
                     <li class="nav-item">
@@ -330,12 +241,6 @@ body {
                                 <a href="{{ route('trainingPackages.listPackages') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> List Packages </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('trainingPackages.creatPackage') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -354,26 +259,11 @@ body {
                     </li>
                     {{-- # ======================================= # Training Session # ======================================= # --}}
                     <li class="nav-item">
-                        <a href="pages/kanban.html" class="nav-link">
+                        <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
                             <i class="nav-icon fas fa-cube"></i>
                             <p> Training Session
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All Sessions </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     {{-- # ======================================= # Attendance # ======================================= # --}}
                     <li class="nav-item">
