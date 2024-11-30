@@ -15,14 +15,30 @@ class GymController extends Controller
     #=======================================================================================#
     #			                          List Function                                   	#
     #=======================================================================================#
-    public function list()
-    {
-        $gymsFromDB = Gym::all();
-        if (count($gymsFromDB) <= 0) { //for gym empty statement
-            return view('empty');
-        }
-        return view("gym.list", ['gyms' => $gymsFromDB]);
+    public function list(Request $request)
+{
+    $query = Gym::query(); // Initialize query for gyms
+
+    // Search by gym name or location (adjust fields as necessary)
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where('name', 'like', '%' . $search . '%');
     }
+
+    // Paginate results
+    $gyms = $query->paginate(10); // Adjust the number of items per page as needed
+
+    // If no gyms and no search query, show the empty view
+    if ($gyms->isEmpty() && !$request->has('search')) {
+        return view('empty');
+    }
+
+    return view("gym.list", [
+        'gyms' => $gyms,
+        'search' => $request->input('search', ''), // Pass the search query to the view
+    ]);
+}
+
     #=======================================================================================#
     #			                            Show Function                                 	#
     #=======================================================================================#

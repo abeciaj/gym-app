@@ -49,7 +49,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="manager_id">City Manger</label>
+                                    <label for="manager_id">City Manager</label>
                                     <select required class=" form-control @error('manager_id') is-invalid @enderror"
                                         name="manager_id" id="manager_id">
                                         @if ($cityData->manager != null)

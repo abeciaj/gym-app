@@ -20,12 +20,12 @@
                     @endif
 
                     <div class="col-sm-6">
-                        <h4>Gym Manger</h4>
+                        <h4>Gym Manager</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">New Gym Manger</li>
+                            <li class="breadcrumb-item active">New Gym Manager</li>
                         </ol>
                     </div>
                 </div>

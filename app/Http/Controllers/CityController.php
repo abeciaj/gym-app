@@ -15,13 +15,27 @@ class CityController extends Controller
     #=======================================================================================#
     #			                          list Function                                   	#
     #=======================================================================================#
-    public function list()
+    public function list(Request $request)
     {
-        $allCities = City::all();
-        if (count($allCities) <= 0) { //for empty statement
+        $query = City::query();
+
+        // Search by city name
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        // Paginate results
+        $allCities = $query->paginate(10); // Adjust the number of items per page as needed
+
+        if ($allCities->isEmpty() && !$request->has('search')) { 
             return view('empty');
         }
-        return view("city.list", ['allCities' => $allCities]);
+
+        return view("city.list", [
+            'allCities' => $allCities,
+            'search' => $request->input('search', ''), // Retain search query in the view
+        ]);
     }
 
     #=======================================================================================#

@@ -56,7 +56,7 @@
                                     <input type="text" id="name" class="form-control" required placeholder="Gym Name" name="name">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Gym Manger</label>
+                                    <label class="form-label">Gym Manager</label>
                                     <select class="form-control" name="user_id">
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>

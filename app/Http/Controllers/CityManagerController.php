@@ -61,15 +61,31 @@ class CityManagerController extends Controller
     #=======================================================================================#
     #			                           List Function                                	#
     #=======================================================================================#
-    public function list()
+    public function list(Request $request)
     {
-        $usersFromDB =  User::role('cityManager')->withoutBanned()->get();
-        // $usersFromDB = User::all();
-        // $usersFromDB =  User::role('cityManager')->get();
-        if (count($usersFromDB) <= 0) { //for empty statement
+        $query = User::role('cityManager')->withoutBanned(); // Initialize the query
+
+        // Search by city manager name or email
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%'); // Adjust search fields as needed
+            });
+        }
+
+        // Paginate results
+        $users = $query->paginate(10); // Adjust the number of items per page as needed
+
+        // If no users and no search query, show the empty view
+        if ($users->isEmpty() && !$request->has('search')) {
             return view('empty');
         }
-        return view("cityManager.list", ['users' => $usersFromDB]);
+
+        return view("cityManager.list", [
+            'users' => $users,
+            'search' => $request->input('search', ''), // Pass the search query back to the view
+        ]);
     }
     #=======================================================================================#
     #			                           Show Function                                	#

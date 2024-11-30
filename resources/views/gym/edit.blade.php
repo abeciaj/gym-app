@@ -52,7 +52,7 @@
 
         
                            <div class="form-group">
-                                <label class="form-label">Gym Manger</label>
+                                <label class="form-label">Gym Manager</label>
                                 <select class="form-control" name="user_id">
                                      @foreach($users as $user) 
                                 <option value="{{$user->id}}" @if($user->id ==$gym->user_id) selected @endif >{{$user->name}}</option>
