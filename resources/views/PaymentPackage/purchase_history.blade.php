@@ -20,16 +20,19 @@
         </section>
         <!-- Main content -->
         <section class="content">
-
-
             <!-- Default box -->
             <div class="card">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h3 class="card-title">Purchases</h3>
-                    
+                </div> -->
+                <div class="card-header d-flex justify-content-center align-items-center">
+                    <form action="{{ route('PaymentPackage.purchase_history') }}" method="GET" class="align-items-center d-flex">
+                        <input type="text" name="search" class="form-control" value="{{ $search ?? '' }}" />
+                        <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
                 <div class="card-body p-0">
-                    <table class="table table-striped projects" id="proj">
+                    <table class="table table-striped projects">
                         <thead>
                             <tr>
                                 <th>User ID</th>
@@ -72,6 +75,12 @@
                         </tbody>
                     </table>
 
+                </div>
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="mt-3">
+                        {{ $revenues->appends(['search' => $search])->links(('vendor.pagination.bootstrap-5')) }}
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -20,15 +20,30 @@ class TrainingController extends Controller
     #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
-    public function index()
+    public function index(Request $request)
     {
-        $trainingSessions = TrainingSession::all();
-        if (count($trainingSessions) <= 0) {
+        $query = TrainingSession::query(); // Initialize the query for training sessions
+
+        // Apply search filter if provided
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'like', '%' . $search . '%') // Search by session title
+                ->orWhere('trainer', 'like', '%' . $search . '%'); // Optionally search by trainer name
+        }
+
+        // Paginate results
+        $trainingSessions = $query->paginate(10); // Specify number of items per page
+
+        // Show empty view if no results and no search applied
+        if ($trainingSessions->isEmpty() && !$request->has('search')) {
             return view('empty');
         }
-        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
-    }
 
+        return view('TrainingSessions.listSessions', [
+            'trainingSessions' => $trainingSessions,
+            'search' => $request->input('search', ''), // Retain search input in the view
+        ]);
+    }
     #=======================================================================================#
     #			                             create                                        	#
     #=======================================================================================#

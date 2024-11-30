@@ -30,7 +30,7 @@
             </div>
         @endif
         <section class="content">
-            <form action="{{ route('trainingPackeges.store') }}" method="post" enctype="multipart/form-data"
+            <form action="{{ route('trainingPackages.store') }}" method="post" enctype="multipart/form-data"
                 class="w-75 m-auto">
                 @csrf
                 <div class="row">

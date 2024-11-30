@@ -23,17 +23,26 @@
 
             <!-- Default box -->
             <div class="card">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h3 class="card-title">Projects</h3>
                     <div class="card-tools">
-                        <a href="{{ route('trainingPackeges.creatPackege') }}" class="btn btn-primary">
+                        <a href="{{ route('trainingPackages.creatPackage') }}" class="btn btn-primary">
                             <i class="fas fa-plus-circle"></i> Add New Package
                         </a>
                     </div>
                     
+                </div> -->
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <a href="{{ route('trainingPackages.creatPackage') }}" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Add New Package
+                    </a>
+                    <form action="{{ route('trainingPackages.listPackages') }}" method="GET" class="align-items-center d-flex">
+                        <input type="text" name="search" class="form-control" value="{{ $search ?? '' }}" />
+                        <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
                 <div class="card-body p-0">
-                    <table class="table table-striped projects" id="proj">
+                    <table class="table table-striped projects">
                         <thead>
                             <tr>
                                 <th class="project-state">Package Id</th>
@@ -57,12 +66,12 @@
                                     </td>
                                     <td class="project-actions text-center">
                                         <a class="btn btn-info btn-sm"
-                                            href="{{ route('trainingPackeges.show_training_package', $package['id']) }}">
+                                            href="{{ route('trainingPackages.show_training_package', $package['id']) }}">
 
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a class="btn btn-warning btn-sm text-white"
-                                            href="{{ route('trainingPackeges.editPackege', $package['id']) }}">
+                                            href="{{ route('trainingPackages.editPackage', $package['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
                                         <a href="{{ route('PaymentPackage.stripe') }}" class="btn btn-info btn-sm">Buy
                                         </a>
@@ -78,6 +87,12 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="mt-3">
+                        {{ $packages->appends(['search' => $search])->links(('vendor.pagination.bootstrap-5')) }}
+                    </div>
+                </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -89,7 +104,7 @@
         function deletePackage(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
-                    url: '/trainingPackeges/' + id,
+                    url: '/trainingPackages/' + id,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()

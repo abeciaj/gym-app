@@ -88,13 +88,13 @@ Route::put('/TrainingSessions/{session}', [TrainingController::class, 'update'])
 #=======================================================================================#
 #			                            Packages Routes                                 	#
 #=======================================================================================#
-Route::get('/trainingPackeges/index', [TrainingPackagesController::class, 'index'])->name('trainingPackeges.listPackeges')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin|cityManager|gymManager');
-Route::get('/trainingPackeges/create_package', [TrainingPackagesController::class, 'create'])->name('trainingPackeges.creatPackege')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
-Route::post('/trainingPackeges/package', [TrainingPackagesController::class, 'store'])->name('trainingPackeges.store')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
-Route::get('/trainingPackeges/package/{session}', [TrainingPackagesController::class, 'show'])->name('trainingPackeges.show_training_package')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
-Route::get('/trainingPackeges/{package}/edit', [TrainingPackagesController::class, 'edit'])->name('trainingPackeges.editPackege')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
-Route::delete('/trainingPackeges/{package}  ', [TrainingPackagesController::class, 'deletePackage'])->name('trainingPackeges.delete_package')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
-Route::put('/trainingPackeges/{package}', [TrainingPackagesController::class, 'update'])->name('trainingPackeges.update_package')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
+Route::get('/trainingPackages/index', [TrainingPackagesController::class, 'index'])->name('trainingPackages.listPackages')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin|cityManager|gymManager');
+Route::get('/trainingPackages/create_package', [TrainingPackagesController::class, 'create'])->name('trainingPackages.creatPackage')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
+Route::post('/trainingPackages/package', [TrainingPackagesController::class, 'store'])->name('trainingPackages.store')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
+Route::get('/trainingPackages/package/{session}', [TrainingPackagesController::class, 'show'])->name('trainingPackages.show_training_package')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
+Route::get('/trainingPackages/{package}/edit', [TrainingPackagesController::class, 'edit'])->name('trainingPackages.editPackage')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
+Route::delete('/trainingPackages/{package}  ', [TrainingPackagesController::class, 'deletePackage'])->name('trainingPackages.delete_package')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
+Route::put('/trainingPackages/{package}', [TrainingPackagesController::class, 'update'])->name('trainingPackages.update_package')->middleware('auth')->middleware('logs-out-banned-user')->middleware('role:admin');
 #=======================================================================================#
 #			                            User Routes                                   	#
 #=======================================================================================#
@@ -140,7 +140,7 @@ Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.un
 #=======================================================================================#
 #			                           Training Packages                              	#
 #=======================================================================================#
-// Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
+// Route::get('/trainingPackages/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
 
 
 #=======================================================================================#
