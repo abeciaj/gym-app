@@ -11,15 +11,32 @@ class AllUsersController extends Controller
     #=======================================================================================#
     #			                           List Function                                	#
     #=======================================================================================#
-    public function list()
+    public function list(Request $request)
     {
-        $usersFromDB =  User::role('user')->withoutBanned()->get();
-        if (count($usersFromDB) <= 0) { //for empty statement
+        $query = User::role('user')->withoutBanned(); // Initialize the query for users
+
+        // Apply search filter if provided
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%'); // Adjust fields as needed
+            });
+        }
+
+        // Paginate results
+        $users = $query->paginate(10); // Specify number of items per page
+
+        // Show empty view if no results and no search applied
+        if ($users->isEmpty() && !$request->has('search')) {
             return view('empty');
         }
-        return view("allUsers.list", ['users' => $usersFromDB]);
-    }
 
+        return view("allUsers.list", [
+            'users' => $users,
+            'search' => $request->input('search', ''), // Retain search input in the view
+        ]);
+    }
     #=======================================================================================#
     #			                           Show Function                                	#
     #=======================================================================================#

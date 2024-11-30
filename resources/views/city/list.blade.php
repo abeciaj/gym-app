@@ -22,23 +22,25 @@
         <section class="content">
             <!-- Default box -->
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Cities</h3>
-                    <div class="card-tools">
-                        <a href="{{ route('city.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus-circle"></i> Add New City
-                        </a>
-                    </div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <a href="{{ route('city.create') }}" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Add New City
+                    </a>
+                    <form action="{{ route('city.list') }}" method="GET" class="align-items-center d-flex">
+                        <input type="text" name="search" class="form-control" value="{{ $search ?? '' }}" />
+                        <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
+                
                 <div class="card-body p-0">
-                    <table class="table table-striped projects" id="proj">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th class="project-state"> ID </th>
                                 <th class="project-state"> City Name</th>
                                 <th class="project-state"> City Manager Name</th>
                                 <th class="project-state">Created at</th>
-                                <th class="project-state"></th>
+                                <th class="project-state">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,6 +71,12 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="mt-3">
+                        {{ $allCities->appends(['search' => $search])->links(('vendor.pagination.bootstrap-5')) }}
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

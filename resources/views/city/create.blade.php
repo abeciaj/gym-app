@@ -46,7 +46,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="manager_id">City Manger</label>
+                                    <label for="manager_id">City Manager</label>
                                     <label style="color: #aeb1b6; ">(optional)</label>
                                     <select class=" form-control @error('manager_id') is-invalid @enderror"
                                         name="manager_id" id="manager_id">

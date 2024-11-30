@@ -23,19 +23,14 @@
 
         <!-- Default box -->
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Projects</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+            <div class="card-header d-flex justify-content-center align-items-center">
+                <form action="{{ route('city.list') }}" method="GET" class="align-items-center d-flex">
+                    <input type="text" name="search" class="form-control" value="{{ $search ?? '' }}" />
+                    <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
             <div class="card-body p-0">
-                <table class="table table-striped projects" id="proj">
+                <table class="table table-striped projects">
                     <thead>
                         <tr>
                             <th class="project-state">ID</th>
@@ -71,6 +66,12 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <!-- Pagination -->
+            <div class="row">
+                <div class="mt-3">
+                    {{ $users->appends(['search' => $search])->links(('vendor.pagination.bootstrap-5')) }}
+                </div>
             </div>
             <!-- /.card-body -->
         </div>

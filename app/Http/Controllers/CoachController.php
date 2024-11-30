@@ -13,13 +13,31 @@ class CoachController extends Controller
     #=======================================================================================#
     #			                        list Function                                       #
     #=======================================================================================#
-    public function list()
+    public function list(Request $request)
     {
-        $coachesFromDB = User::role('coach')->withoutBanned()->get();
-        if (count($coachesFromDB) <= 0) {
+        $query = User::role('coach')->withoutBanned(); // Initialize query for coaches
+
+        // Search by coach name or email
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%'); // Adjust fields as necessary
+            });
+        }
+
+        // Paginate results
+        $coaches = $query->paginate(10); // Adjust the number of items per page as needed
+
+        // If no coaches and no search query, show the empty view
+        if ($coaches->isEmpty() && !$request->has('search')) {
             return view('empty');
         }
-        return view("coach.list", ['coaches' => $coachesFromDB]);
+
+        return view("coach.list", [
+            'coaches' => $coaches,
+            'search' => $request->input('search', ''), // Pass the search query to the view
+        ]);
     }
     #=======================================================================================#
     #			                        show Function                                       #
